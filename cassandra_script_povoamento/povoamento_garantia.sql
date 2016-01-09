@@ -1,4 +1,6 @@
 insert into Garantia (Cod_Garantia, Valor, Periodo_extensao) values (1, 2928.65, 1.8);
+-- testando atualizacao
+update garantia set valor = 2001.50 where Cod_Garantia = 1; 
 insert into Garantia (Cod_Garantia, Valor, Periodo_extensao) values (2, 2551.08, 0.1);
 insert into Garantia (Cod_Garantia, Valor, Periodo_extensao) values (3, 544.14, 0.3);
 insert into Garantia (Cod_Garantia, Valor, Periodo_extensao) values (4, 327.22, 1.2);
