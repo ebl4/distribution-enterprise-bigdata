@@ -1,0 +1,8 @@
+CREATE TABLE Comprador(
+	CPF varchar PRIMARY KEY,
+	Nome varchar ,
+	Data_Nascimento varchar ,
+	Telefone varchar ,
+	Email varchar ,
+	GeographyKey int
+);
