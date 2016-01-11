@@ -3,7 +3,6 @@ DROP TABLE DimGeography;
 DROP TABLE DimGeography;
 DROP TABLE DimSalesTerritory;
 
-
 CREATE TABLE Comprador(
 	CPF varchar PRIMARY KEY,
 	Nome varchar ,
@@ -13,7 +12,7 @@ CREATE TABLE Comprador(
 	GeographyKey int
 );
 
-
+CREATE INDEX Comprador_nome ON Comprador( Nome );
 
 CREATE TABLE DimDate(
 	DateKey int  PRIMARY KEY,
@@ -35,10 +34,7 @@ CREATE TABLE DimDate(
 	FiscalQuarter tinyint  ,
 	FiscalYear smallint  ,
 	FiscalSemester tinyint  
- 
 );
-
-
 
 CREATE TABLE Fornecedor(
 	CNPJ varchar  PRIMARY KEY,
@@ -46,19 +42,18 @@ CREATE TABLE Fornecedor(
 	Telefone varchar ,
 	Email varchar ,
 	Reputacao varchar  ,
-	GeographyKey int ,
-
-
+	GeographyKey int 
 ) ;
 
+CREATE INDEX Fornecedor_nome ON Fornecedor( Nome );
 
 CREATE TABLE Garantia(
 	Cod_Garantia varchar  PRIMARY KEY,
 	Valor double ,
-	Periodo_extensao float  	
-
-
+	Periodo_extensao float  
 ) ;
+
+CREATE INDEX Garantia_extensao ON Garantia( Periodo_extensao );
 
 CREATE TABLE Gerente(
 	CPF varchar   PRIMARY KEY,
@@ -68,8 +63,9 @@ CREATE TABLE Gerente(
 	Setor varchar ,
 	Qualificacao varchar ,
 	GeographyKey int 
- 
 ) ;
+
+CREATE INDEX Gerente_nome ON Produto( Nome );
 
 CREATE TABLE Produto(
 	Cod_produto varchar   PRIMARY KEY,
@@ -77,8 +73,9 @@ CREATE TABLE Produto(
 	Preco double ,
 	Descricao varchar ,
 	Nome varchar 
-
 ) ;
+
+CREATE INDEX Produto_nome ON Produto( Nome );
 
 CREATE TABLE Vendedor(
 	Cod_vendedor varchar   PRIMARY KEY,
@@ -87,10 +84,10 @@ CREATE TABLE Vendedor(
 	Salario double ,
 	CPF varchar ,
 	Produtividade varchar ,
-	Endereco varchar  
- 
+	Endereco varchar 
 ) ;
 
+CREATE INDEX Vendedor_nome ON Vendedor( Nome );
 
 CREATE TABLE DimGeography(
 	GeographyKey int  PRIMARY KEY  ,
@@ -104,9 +101,7 @@ CREATE TABLE DimGeography(
 	PostalCode varchar ,
 	SalesTerritoryKey int ,
 	IpAddressLocator varchar 
-
 );
-
 
 CREATE TABLE DimSalesTerritory(
 	SalesTerritoryKey int   PRIMARY KEY ,
@@ -115,6 +110,4 @@ CREATE TABLE DimSalesTerritory(
 	SalesTerritoryCountry varchar  ,
 	SalesTerritoryGroup varchar ,
 	SalesTerritoryImage blob
- 
 ) ;
-
