@@ -12,8 +12,6 @@ CREATE TABLE Comprador(
 	GeographyKey int
 );
 
-CREATE INDEX Comprador_nome ON Comprador( Nome );
-
 CREATE TABLE DimDate(
 	DateKey int  PRIMARY KEY,
 	FullDateAlternateKey date  ,
@@ -45,15 +43,11 @@ CREATE TABLE Fornecedor(
 	GeographyKey int 
 ) ;
 
-CREATE INDEX Fornecedor_nome ON Fornecedor( Nome );
-
 CREATE TABLE Garantia(
 	Cod_Garantia varchar  PRIMARY KEY,
 	Valor double ,
 	Periodo_extensao float  
 ) ;
-
-CREATE INDEX Garantia_extensao ON Garantia( Periodo_extensao );
 
 CREATE TABLE Gerente(
 	CPF varchar   PRIMARY KEY,
@@ -65,8 +59,6 @@ CREATE TABLE Gerente(
 	GeographyKey int 
 ) ;
 
-CREATE INDEX Gerente_nome ON Produto( Nome );
-
 CREATE TABLE Produto(
 	Cod_produto varchar   PRIMARY KEY,
 	Cod_garantia varchar  ,
@@ -74,8 +66,6 @@ CREATE TABLE Produto(
 	Descricao varchar ,
 	Nome varchar 
 ) ;
-
-CREATE INDEX Produto_nome ON Produto( Nome );
 
 CREATE TABLE Vendedor(
 	Cod_vendedor varchar   PRIMARY KEY,
@@ -86,8 +76,6 @@ CREATE TABLE Vendedor(
 	Produtividade varchar ,
 	Endereco varchar 
 ) ;
-
-CREATE INDEX Vendedor_nome ON Vendedor( Nome );
 
 CREATE TABLE DimGeography(
 	GeographyKey int  PRIMARY KEY  ,
