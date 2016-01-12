@@ -14,28 +14,6 @@ CREATE TABLE Comprador(
 
 CREATE INDEX Comprador_nome ON Comprador( Nome );
 
-CREATE TABLE DimDate(
-	DateKey int PRIMARY KEY,
-	FullDateAlternateKey date,
-	DayNumberOfWeek tinyint,
-	EnglishDayNameOfWeek varchar,
-	SpanishDayNameOfWeek varchar,
-	FrenchDayNameOfWeek varchar,
-	DayNumberOfMonth tinyint,
-	DayNumberOfYear smallint,
-	WeekNumberOfYear tinyint,
-	EnglishMonthName varchar,
-	SpanishMonthName varchar,
-	FrenchMonthName varchar,
-	MonthNumberOfYear tinyint,
-	CalendarQuarter tinyint,
-	CalendarYear smallint,
-	CalendarSemester tinyint,
-	FiscalQuarter tinyint,
-	FiscalYear smallint,
-	FiscalSemester tinyint  
-);
-
 CREATE TABLE Fornecedor(
 	CNPJ varchar PRIMARY KEY,
 	Nome varchar,
