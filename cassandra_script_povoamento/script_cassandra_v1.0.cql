@@ -89,25 +89,15 @@ CREATE TABLE Vendedor(
 
 CREATE INDEX Vendedor_nome ON Vendedor( Nome );
 
-CREATE TABLE DimGeography(
-	GeographyKey int  PRIMARY KEY  ,
-	City varchar ,
-	StateProvinceCode varchar ,
-	StateProvinceName varchar ,
-	CountryRegionCode varchar ,
-	EnglishCountryRegionName varchar ,
-	SpanishCountryRegionName varchar ,
-	FrenchCountryRegionName varchar ,
-	PostalCode varchar ,
-	SalesTerritoryKey int ,
-	IpAddressLocator varchar 
-);
-
-CREATE TABLE DimSalesTerritory(
-	SalesTerritoryKey int   PRIMARY KEY ,
-	SalesTerritoryAlternateKey int ,
-	SalesTerritoryRegion varchar  ,
-	SalesTerritoryCountry varchar  ,
-	SalesTerritoryGroup varchar ,
-	SalesTerritoryImage blob
+CREATE TABLE Venda(
+	Cod_venda varchar PRIMARY KEY,
+	Cod_gerente varchar,
+	Cod_produto varchar,
+	Cod_fornecedor varchar,
+	DateKey int,
+	Valor_venda float
 ) ;
+
+CREATE INDEX Venda_produto ON Venda( Cod_produto );
+CREATE INDEX Venda_gerente ON Venda( Cod_gerente );
+CREATE INDEX Venda_fornecedor ON Venda( Cod_fornecedor );
