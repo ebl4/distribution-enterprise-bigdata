@@ -1,3 +1,5 @@
+DROP TABLE DimDate;
+
 CREATE INDEX Comprador_nome ON Comprador( Nome );
 
 CREATE INDEX Fornecedor_nome ON Fornecedor( Nome );
