@@ -110,3 +110,41 @@ CREATE OR REPLACE AGGREGATE average ( int )
   STYPE tuple<int,bigint>
   FINALFUNC averageFinal
   INITCOND (0, 0);
+  
+CREATE FUNCTION count_state ( state bigint, val counter )
+  CALLED ON NULL INPUT
+  RETURNS bigint
+  LANGUAGE java
+  AS '
+      if (val != null)
+          state = state + 1;
+      return state;
+  ';
+
+CREATE AGGREGATE count ( counter )
+  SFUNC count_state
+  STYPE bigint
+  INITCOND 0;
+
+CREATE OR REPLACE FUNCTION group_and_count_state( state map<varchar, int>, type varchar )
+CALLED ON NULL INPUT
+RETURNS map<varchar, int>
+LANGUAGE java AS '
+Integer count = (Integer) state.get(type);  if (count == null) count = 1; else count++; state.put(type, count); return state; ' ;
+
+CREATE OR REPLACE AGGREGATE group_and_count(varchar) 
+SFUNC group_and_count_state 
+STYPE map<varchar, int> 
+INITCOND {};
+
+CREATE OR REPLACE FUNCTION group_and_sum_state( state map<varchar, float>, type varchar, candidate float)
+CALLED ON NULL INPUT
+RETURNS map<varchar, float>
+LANGUAGE java AS '
+Double sum = (Double) state.get(type);  if (sum == null) sum = candidate; else sum = sum + candidate; state.put(type, sum); return state; ' ;
+
+CREATE OR REPLACE AGGREGATE group_and_sum(varchar, float) 
+SFUNC group_and_sum_state 
+STYPE map<varchar, float> 
+INITCOND {};
+
