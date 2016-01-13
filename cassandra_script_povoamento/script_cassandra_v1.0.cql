@@ -3,17 +3,6 @@ DROP TABLE DimGeography;
 DROP TABLE DimGeography;
 DROP TABLE DimSalesTerritory;
 
-CREATE TABLE Comprador(
-	CPF varchar PRIMARY KEY,
-	Nome varchar,
-	Data_Nascimento varchar,
-	Telefone varchar,
-	Email varchar,
-	GeographyKey int
-);
-
-CREATE INDEX Comprador_nome ON Comprador( Nome );
-
 CREATE TABLE Fornecedor(
 	CNPJ varchar PRIMARY KEY,
 	Nome varchar,
